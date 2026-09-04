@@ -49,6 +49,39 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Validar credenciais do Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          # O erro nativo do `vercel pull` ("Could not retrieve Project Settings")
+          # não distingue um token em falta de um token com âmbito errado. Esta
+          # verificação prévia diz exactamente o que está mal.
+          if [ -z "$VERCEL_TOKEN" ] || [ -z "$VERCEL_ORG_ID" ] || [ -z "$VERCEL_PROJECT_ID" ]; then
+            echo "::error::Faltam segredos. Defina VERCEL_TOKEN, VERCEL_ORG_ID e VERCEL_PROJECT_ID no repositório."
+            exit 1
+          fi
+
+          codigo=$(curl -sS -o /dev/null -w '%{http_code}' \
+            -H "Authorization: Bearer $VERCEL_TOKEN" \
+            "https://api.vercel.com/v9/projects/$VERCEL_PROJECT_ID?teamId=$VERCEL_ORG_ID")
+
+          case "$codigo" in
+            200)
+              echo "Credenciais válidas: o token acede ao projecto $VERCEL_PROJECT_ID." ;;
+            401)
+              echo "::error::VERCEL_TOKEN inválido ou expirado. Tokens OAuth da CLI duram poucas horas — crie um token em https://vercel.com/account/tokens."
+              exit 1 ;;
+            403)
+              echo "::error::O VERCEL_TOKEN não tem acesso ao âmbito $VERCEL_ORG_ID. Recrie o token em https://vercel.com/account/tokens escolhendo no selector Scope a equipa dona do projecto, e não a conta pessoal."
+              exit 1 ;;
+            404)
+              echo "::error::Projecto $VERCEL_PROJECT_ID não encontrado no âmbito $VERCEL_ORG_ID. Confirme os valores em .vercel/repo.json (ou .vercel/project.json) após 'vercel link'."
+              exit 1 ;;
+            *)
+              echo "::error::Resposta inesperada da API do Vercel (HTTP $codigo)."
+              exit 1 ;;
+          esac
+
       - name: Instalar a CLI do Vercel
         run: npm install --global vercel@latest
 
