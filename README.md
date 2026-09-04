@@ -89,13 +89,48 @@ O fluxo é, portanto: **abrir PR → pré-visualização automática → revisã
 publicação automática em produção**. Não há publicação manual no caminho normal, e nada é
 publicado sem passar no portão de qualidade.
 
+### Porque é que a integração Git do Vercel está desligada
+
+O ficheiro [`vercel.json`](vercel.json) declara `git.deploymentEnabled: false`. Sem isto, importar o
+repositório no Vercel criaria **duas** publicações por cada push: a do Vercel e a do workflow. Com a
+integração desligada, a única via de publicação é o GitHub Actions — e como o workflow de produção só
+arranca depois da Verificação Contínua passar, nada chega a produção sem passar no portão de qualidade.
+
+### Ligar ao Vercel (uma só vez)
+
+1. Em [vercel.com/new](https://vercel.com/new), importe `Instituto-Superior-de-Angola/aOS-website`.
+   O Vercel detecta Next.js automaticamente; aceite as opções por omissão e conclua a importação.
+2. Localmente, associe a pasta ao projecto e recolha os identificadores:
+
+   ```bash
+   npx vercel login
+   npx vercel link          # escolha o projecto acabado de importar
+   cat .vercel/project.json # contém orgId e projectId
+   ```
+
+3. Crie um token em **Vercel → Account Settings → Tokens** com acesso ao âmbito do ISA.
+4. Registe os três segredos no repositório:
+
+   ```bash
+   gh secret set VERCEL_TOKEN      --repo Instituto-Superior-de-Angola/aOS-website
+   gh secret set VERCEL_ORG_ID     --repo Instituto-Superior-de-Angola/aOS-website
+   gh secret set VERCEL_PROJECT_ID --repo Instituto-Superior-de-Angola/aOS-website
+   ```
+
+5. Aponte o domínio `aos.gov.ao` ao projecto em **Vercel → Settings → Domains**.
+
+A pasta `.vercel/` está no `.gitignore` e nunca deve ser commitada.
+
 ### Segredos necessários no repositório
 
 | Segredo | Origem |
 | --- | --- |
 | `VERCEL_TOKEN` | Vercel → Account Settings → Tokens |
-| `VERCEL_ORG_ID` | `.vercel/project.json` após `vercel link` |
-| `VERCEL_PROJECT_ID` | `.vercel/project.json` após `vercel link` |
+| `VERCEL_ORG_ID` | `orgId` em `.vercel/project.json`, após `vercel link` |
+| `VERCEL_PROJECT_ID` | `projectId` em `.vercel/project.json`, após `vercel link` |
+
+Enquanto estes segredos não existirem, a Verificação Contínua passa normalmente e apenas os workflows
+de publicação falham — o repositório fica utilizável desde o primeiro dia.
 
 ---
 
