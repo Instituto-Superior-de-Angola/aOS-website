@@ -78,13 +78,21 @@ jobs:
           echo "  GET /v9/projects/<projecto>     -> $projecto"
           echo "  GET /v9/projects/<projecto>/env -> $ambiente"
 
+          # Um token restringido a projectos específicos lê o projecto mas não
+          # tem contexto de utilizador. A CLI chama /v2/user no arranque, recebe
+          # 404 e reporta apenas "Could not retrieve Project Settings".
+          if [ "$projecto" = "200" ] && [ "$utilizador" != "200" ]; then
+            echo "::error::O VERCEL_TOKEN está restringido a projectos específicos: lê o projecto (200) mas não tem contexto de utilizador (/v2/user -> $utilizador). O 'vercel pull' precisa desse contexto. Recrie o token em https://vercel.com/account/tokens com Scope na equipa dona do projecto e acesso a TODOS os projectos, sem restrição."
+            exit 1
+          fi
+
           falhou=0
           for par in "utilizador:$utilizador" "equipa:$equipa" "projecto:$projecto" "ambiente:$ambiente"; do
             nome=${par%%:*}; codigo=${par##*:}
             case "$codigo" in
               200) ;;
               401) echo "::error::[$nome] HTTP 401 — VERCEL_TOKEN inválido ou expirado. Tokens OAuth da CLI duram poucas horas; crie um em https://vercel.com/account/tokens."; falhou=1 ;;
-              403) echo "::error::[$nome] HTTP 403 — o token não tem permissão para este recurso. Recrie o token em https://vercel.com/account/tokens com Scope na equipa dona do projecto e SEM restrição a projectos específicos."; falhou=1 ;;
+              403) echo "::error::[$nome] HTTP 403 — o token não tem permissão para este recurso. Confirme que o Scope do token é a equipa dona do projecto."; falhou=1 ;;
               404) echo "::error::[$nome] HTTP 404 — recurso inexistente neste âmbito. Confirme VERCEL_ORG_ID e VERCEL_PROJECT_ID contra .vercel/repo.json."; falhou=1 ;;
               *)   echo "::error::[$nome] HTTP $codigo inesperado."; falhou=1 ;;
             esac
