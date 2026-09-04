@@ -61,26 +61,36 @@ jobs:
             exit 1
           fi
 
-          codigo=$(curl -sS -o /dev/null -w '%{http_code}' \
-            -H "Authorization: Bearer $VERCEL_TOKEN" \
-            "https://api.vercel.com/v9/projects/$VERCEL_PROJECT_ID?teamId=$VERCEL_ORG_ID")
+          sonda() {
+            curl -sS -o /dev/null -w '%{http_code}' \
+              -H "Authorization: Bearer $VERCEL_TOKEN" "$1"
+          }
 
-          case "$codigo" in
-            200)
-              echo "Credenciais válidas: o token acede ao projecto $VERCEL_PROJECT_ID." ;;
-            401)
-              echo "::error::VERCEL_TOKEN inválido ou expirado. Tokens OAuth da CLI duram poucas horas — crie um token em https://vercel.com/account/tokens."
-              exit 1 ;;
-            403)
-              echo "::error::O VERCEL_TOKEN não tem acesso ao âmbito $VERCEL_ORG_ID. Recrie o token em https://vercel.com/account/tokens escolhendo no selector Scope a equipa dona do projecto, e não a conta pessoal."
-              exit 1 ;;
-            404)
-              echo "::error::Projecto $VERCEL_PROJECT_ID não encontrado no âmbito $VERCEL_ORG_ID. Confirme os valores em .vercel/repo.json (ou .vercel/project.json) após 'vercel link'."
-              exit 1 ;;
-            *)
-              echo "::error::Resposta inesperada da API do Vercel (HTTP $codigo)."
-              exit 1 ;;
-          esac
+          base=https://api.vercel.com
+          utilizador=$(sonda "$base/v2/user")
+          equipa=$(sonda "$base/v2/teams/$VERCEL_ORG_ID")
+          projecto=$(sonda "$base/v9/projects/$VERCEL_PROJECT_ID?teamId=$VERCEL_ORG_ID")
+          ambiente=$(sonda "$base/v9/projects/$VERCEL_PROJECT_ID/env?teamId=$VERCEL_ORG_ID")
+
+          echo "Sondas à API do Vercel (o \`vercel pull\` precisa das quatro):"
+          echo "  GET /v2/user                    -> $utilizador"
+          echo "  GET /v2/teams/<org>             -> $equipa"
+          echo "  GET /v9/projects/<projecto>     -> $projecto"
+          echo "  GET /v9/projects/<projecto>/env -> $ambiente"
+
+          falhou=0
+          for par in "utilizador:$utilizador" "equipa:$equipa" "projecto:$projecto" "ambiente:$ambiente"; do
+            nome=${par%%:*}; codigo=${par##*:}
+            case "$codigo" in
+              200) ;;
+              401) echo "::error::[$nome] HTTP 401 — VERCEL_TOKEN inválido ou expirado. Tokens OAuth da CLI duram poucas horas; crie um em https://vercel.com/account/tokens."; falhou=1 ;;
+              403) echo "::error::[$nome] HTTP 403 — o token não tem permissão para este recurso. Recrie o token em https://vercel.com/account/tokens com Scope na equipa dona do projecto e SEM restrição a projectos específicos."; falhou=1 ;;
+              404) echo "::error::[$nome] HTTP 404 — recurso inexistente neste âmbito. Confirme VERCEL_ORG_ID e VERCEL_PROJECT_ID contra .vercel/repo.json."; falhou=1 ;;
+              *)   echo "::error::[$nome] HTTP $codigo inesperado."; falhou=1 ;;
+            esac
+          done
+          [ "$falhou" -eq 0 ] || exit 1
+          echo "Credenciais válidas em todas as sondas."
 
       - name: Instalar a CLI do Vercel
         run: npm install --global vercel@latest
