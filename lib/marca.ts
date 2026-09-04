@@ -11,7 +11,6 @@ export const MARCA = {
   sigla: 'aOS',
   descricao: 'Distribuição GNU/Linux Soberana da República de Angola',
   promotor: 'Instituto Superior de Angola (ISA)',
-  financiador: 'FUNDECIT — Edital N.º 1/2026',
   dominio: 'aos.gov.ao',
   repositorio: 'https://github.com/Instituto-Superior-de-Angola/projecto_angolanOS',
   repositorioWebsite: 'https://github.com/Instituto-Superior-de-Angola/aOS-website',

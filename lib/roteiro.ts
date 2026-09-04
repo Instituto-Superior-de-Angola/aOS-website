@@ -26,7 +26,7 @@ export const FASES: Fase[] = [
     nome: 'Fase 1 — Base técnica',
     periodo: 'Nov 2026 — Out 2027',
     estado: 'futura',
-    objectivo: 'Encerrar o ciclo FUNDECIT Tipo 1 com a base técnica instalada e uma alpha pública.',
+    objectivo: 'Consolidar a base técnica instalada e lançar uma alpha pública.',
     marcos: ['Mirror APT nacional em produção', 'Tema Mwangolé', 'Lançamento do aOS 0.9 Alpha'],
   },
   {

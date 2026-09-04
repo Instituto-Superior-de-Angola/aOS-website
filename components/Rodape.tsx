@@ -10,7 +10,7 @@ export function Rodape() {
         <div>
           <Logotipo invertido />
           <p className="mt-5 max-w-xs text-sm leading-6 text-white/55">
-            {MARCA.descricao}. Um programa do {MARCA.promotor}, apoiado pela {MARCA.financiador}.
+            {MARCA.descricao}. Um programa do {MARCA.promotor}.
           </p>
           <p className="mt-5 font-mono text-2xs text-white/40">{MARCA.dominio}</p>
         </div>

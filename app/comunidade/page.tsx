@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 
 const INSTITUICOES = [
   { nome: 'ISA', papel: 'Instituto Superior de Angola — coordenação do programa' },
-  { nome: 'FUNDECIT', papel: 'Financiamento — Edital N.º 1/2026' },
   { nome: 'MINTTICS', papel: 'Ministério das Telecomunicações, TI e Comunicação Social' },
   { nome: 'MESCTI', papel: 'Ministério do Ensino Superior, Ciência, Tecnologia e Inovação' },
   { nome: 'INFOSI', papel: 'Instituto Nacional de Fomento da Sociedade da Informação' },

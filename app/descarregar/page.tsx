@@ -30,7 +30,7 @@ export default function PaginaDescarregar() {
             <h2 className="font-display text-lg font-bold">Ainda não há imagens públicas</h2>
             <p className="mt-2.5 max-w-3xl text-sm leading-7 text-tinta-suave">
               A primeira imagem distribuída fora da equipa nuclear é o <strong>aOS 0.9 Alpha</strong>, prevista para
-              Outubro de 2027, no fecho do ciclo FUNDECIT Tipo 1. Publicar aqui uma ISO antes disso seria enganar quem
+              Outubro de 2027. Publicar aqui uma ISO antes disso seria enganar quem
               a instalasse em máquinas do Estado. Acompanhe o{' '}
               <Link href="/registo-de-alteracoes" className="font-medium text-aos-vermelho underline">
                 registo de alterações

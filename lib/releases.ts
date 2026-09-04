@@ -50,7 +50,7 @@ export const LANCAMENTOS: Lancamento[] = [
     estado: 'planeado',
     fase: 'Fase 1 — Base técnica',
     resumo:
-      'Primeira imagem distribuída fora da equipa nuclear, encerrando o ciclo FUNDECIT Tipo 1. Destina-se a avaliação técnica, não a produção.',
+      'Primeira imagem distribuída fora da equipa nuclear. Destina-se a avaliação técnica, não a produção.',
     alteracoes: [
       { tipo: 'feat', escopo: 'iso', descricao: 'Imagem instalável da edição Desktop Pública.' },
       { tipo: 'feat', escopo: 'installer', descricao: 'Instalador em português de Angola com selecção de língua nacional.' },

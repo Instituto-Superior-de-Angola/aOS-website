@@ -5,7 +5,7 @@
 </p>
 
 Website oficial do **angolanOS (aOS)** — a Distribuição GNU/Linux Soberana da República de Angola,
-um programa do **Instituto Superior de Angola (ISA)** apoiado pela **FUNDECIT** (Edital N.º 1/2026).
+um programa do **Instituto Superior de Angola (ISA)**.
 
 O código do sistema operativo vive no repositório
 [`projecto_angolanOS`](https://github.com/Instituto-Superior-de-Angola/projecto_angolanOS).
