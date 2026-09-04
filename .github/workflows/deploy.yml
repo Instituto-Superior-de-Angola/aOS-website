@@ -1,0 +1,66 @@
+name: Publicação em Produção
+
+# Publica o website em produção no Vercel.
+#
+# Dispara quando a "Verificação Contínua" termina com sucesso no ramo main —
+# ou seja, imediatamente após o merge de um Pull Request. O gatilho por
+# workflow_run garante que nunca se publica código que não passou no portão de
+# qualidade, sem duplicar aqui os passos de verificação.
+
+on:
+  workflow_run:
+    workflows: ['Verificação Contínua']
+    branches: [main]
+    types: [completed]
+  # Permite uma republicação manual a partir do separador Actions.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: producao
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    name: Publicar em produção
+    # Em workflow_run, só avança se a verificação tiver passado.
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: producao
+      url: ${{ steps.publicar.outputs.url }}
+
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Em workflow_run, o checkout por omissão aponta para o ramo por
+          # omissão; fixamos explicitamente o commit que passou na verificação.
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar a CLI do Vercel
+        run: npm install --global vercel@latest
+
+      - name: Obter a configuração de produção do Vercel
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Compilar os artefactos de produção
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Publicar os artefactos pré-compilados
+        id: publicar
+        run: |
+          url=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Publicado em $url" >> "$GITHUB_STEP_SUMMARY"

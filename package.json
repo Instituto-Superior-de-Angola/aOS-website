@@ -1,0 +1,40 @@
+{
+  "name": "aos-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website oficial do angolanOS (aOS) — Distribuição GNU/Linux Soberana da República de Angola",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "tipos": "tsc --noEmit",
+    "verificar:marca": "node scripts/verificar-identidade-visual.mjs",
+    "verificar:segredos": "node scripts/verificar-segredos.mjs",
+    "verificar:seguranca": "npm run verificar:segredos && npm audit --audit-level=high",
+    "verificar": "npm run tipos && npm run lint && npm run verificar:marca && npm run verificar:segredos && npm run build"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.16.0",
+    "next": "^15.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@types/node": "^22.13.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.5.24",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.26"
+  }
+}

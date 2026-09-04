@@ -1,0 +1,42 @@
+# Dependências
+node_modules/
+.pnp
+.pnp.js
+
+# Compilação do Next.js
+/.next/
+/out/
+next-env.d.ts
+
+# Produção
+/build
+
+# Ambiente e segredos — nunca commitar
+.env
+.env*.local
+.env.production
+
+# Plataforma
+.vercel
+
+# Registos e diagnósticos
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operativo do hospedeiro
+.DS_Store
+Thumbs.db
+*~
+*.swp
+
+# Editores
+.idea/
+.zed/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# TypeScript
+*.tsbuildinfo

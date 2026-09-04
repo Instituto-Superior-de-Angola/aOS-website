@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa o cabeçalho fixo ao saltar para uma âncora. */
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-papel font-body text-tinta antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-tinta;
+  }
+
+  /* Foco visível e consistente em toda a navegação por teclado. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-aos-laranja ring-offset-2 ring-offset-papel;
+  }
+}
+
+@layer components {
+  .contentor {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .kicker {
+    @apply font-display text-2xs font-bold uppercase tracking-kicker text-aos-vermelho;
+  }
+
+  /* Texto com o gradiente da marca — reservado a títulos curtos. */
+  .texto-gradiente {
+    @apply bg-gradiente-aos bg-clip-text text-transparent;
+  }
+
+  .prosa {
+    @apply max-w-prosa text-[0.975rem] leading-7 text-tinta-suave;
+  }
+}
