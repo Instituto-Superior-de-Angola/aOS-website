@@ -31,6 +31,14 @@ export const RODAPE: { titulo: string; ligacoes: Ligacao[] }[] = [
     ],
   },
   {
+    titulo: 'Legal',
+    ligacoes: [
+      { titulo: 'Política de privacidade', href: '/privacidade' },
+      { titulo: 'Termos de serviço', href: '/termos' },
+      { titulo: 'Eliminação de dados', href: '/eliminacao-de-dados' },
+    ],
+  },
+  {
     titulo: 'Técnico',
     ligacoes: [
       { titulo: 'Documentação', href: '/documentacao' },

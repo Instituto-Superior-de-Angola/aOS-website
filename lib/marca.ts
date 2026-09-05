@@ -57,5 +57,14 @@ export const COR_ISA = '#008055';
 /** Gradiente canónico da marca, na mesma direcção do logotipo. */
 export const GRADIENTE = `linear-gradient(135deg, ${CORES.laranja} 0%, ${CORES.vermelho} 100%)`;
 
+/**
+ * Chave do protocolo IndexNow, verificada por `public/<chave>.txt`.
+ *
+ * O IndexNow notifica Bing, Yandex, Seznam e Naver de conteúdo novo ou
+ * alterado. O Google não participa neste protocolo: a submissão ao Google
+ * faz-se pelo Search Console, que exige autenticação da conta.
+ */
+export const INDEXNOW_KEY = 'f5972f42ed8ab9937535595a192e3fa1';
+
 /** Identificador de medição do Google Analytics. */
 export const GA_ID = 'G-CD7C54JGXH';

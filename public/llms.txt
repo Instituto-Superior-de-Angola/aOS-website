@@ -57,6 +57,12 @@ Português de Angola (`pt_AO`), Umbundu (`umb`), Kimbundu (`kmb`), Kikongo (`kng
 - **Documentação:** https://angolanos.isa.ao/documentacao
 - **Comunidade:** https://angolanos.isa.ao/comunidade
 - **Segurança:** https://angolanos.isa.ao/seguranca
+- **Política de privacidade:** https://angolanos.isa.ao/privacidade
+- **Termos de serviço:** https://angolanos.isa.ao/termos
+- **Eliminação de dados:** https://angolanos.isa.ao/eliminacao-de-dados
+
+## Privacidade
+O sítio não tem contas de utilizador nem formulários. A única recolha é a medição de audiência (Google Analytics), que está **desactivada por omissão** e só é activada mediante consentimento explícito do visitante. O endereço IP é anonimizado. Não há publicidade nem perfis de utilizador. Tratamento ao abrigo da Lei n.º 22/11 (Angola).
 
 ## Como contribuir
 Perfis procurados: engenharia de sistemas e empacotamento Debian; linguística das línguas bantu; educação e desenho de interfaces. As mensagens de commit seguem Conventional Commits em português, no formato `<tipo>(<escopo>): <Descrição Curta>`.

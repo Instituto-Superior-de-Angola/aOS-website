@@ -3,6 +3,7 @@ import Script from 'next/script';
 import './globals.css';
 import { Cabecalho } from '@/components/Cabecalho';
 import { Rodape } from '@/components/Rodape';
+import { Consentimento } from '@/components/Consentimento';
 import { MARCA, ISA, GA_ID, CORES } from '@/lib/marca';
 
 export const metadata: Metadata = {
@@ -73,6 +74,12 @@ export const metadata: Metadata = {
     },
   },
   manifest: '/manifest.webmanifest',
+  // Código de verificação do Google Search Console. Definir a variável de
+  // ambiente NEXT_PUBLIC_GOOGLE_VERIFICATION no projecto Vercel dispensa
+  // qualquer alteração de código para concluir a verificação do domínio.
+  verification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION }
+    : undefined,
 };
 
 export const viewport: Viewport = {
@@ -144,6 +151,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           // Conteúdo estático definido em código; não provém de entrada de utilizador.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(dadosEstruturados) }}
         />
+        {/*
+          Google Consent Mode — estado por omissão NEGADO.
+
+          Tem de ser executado antes de o gtag.js ser carregado, sob pena de
+          serem instalados cookies de medição antes de qualquer decisão do
+          visitante. Por isso é emitido aqui, como script literal no <head>, e
+          não através de next/script: assim fica no HTML inicial e é executado
+          na análise do documento, sem depender da ordem de hidratação.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                analytics_storage: 'denied',
+                wait_for_update: 500
+              });
+            `,
+          }}
+        />
       </head>
       <body className="flex min-h-screen flex-col">
         <a
@@ -158,17 +189,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Rodape />
 
-        {/* Google Analytics — carregado após a interactividade da página. */}
+        <Consentimento />
+
+        {/*
+          Medição de audiência com Google Consent Mode.
+
+          O estado por omissão é NEGADO e é declarado antes de qualquer pedido ao
+          Google, pelo que nenhum cookie de medição é instalado enquanto o
+          visitante não decidir. O componente <Consentimento /> emite o
+          'consent update' quando há decisão. Inverter esta ordem instalaria
+          cookies antes do consentimento e tornaria falsa a política de
+          privacidade.
+        */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_ID}');
+            gtag('config', '${GA_ID}', { anonymize_ip: true });
           `}
         </Script>
       </body>

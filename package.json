@@ -12,7 +12,8 @@
     "verificar:marca": "node scripts/verificar-identidade-visual.mjs",
     "verificar:segredos": "node scripts/verificar-segredos.mjs",
     "verificar:seguranca": "npm run verificar:segredos && npm audit --audit-level=high",
-    "verificar": "npm run tipos && npm run lint && npm run verificar:marca && npm run verificar:segredos && npm run build"
+    "verificar": "npm run tipos && npm run lint && npm run verificar:marca && npm run verificar:segredos && npm run build",
+    "submeter:indexnow": "node scripts/submeter-indexnow.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

@@ -10,6 +10,9 @@ const PAGINAS: { caminho: string; prioridade: number; frequencia: 'weekly' | 'mo
   { caminho: '/documentacao', prioridade: 0.7, frequencia: 'monthly' },
   { caminho: '/comunidade', prioridade: 0.7, frequencia: 'monthly' },
   { caminho: '/seguranca', prioridade: 0.6, frequencia: 'monthly' },
+  { caminho: '/privacidade', prioridade: 0.3, frequencia: 'monthly' },
+  { caminho: '/termos', prioridade: 0.3, frequencia: 'monthly' },
+  { caminho: '/eliminacao-de-dados', prioridade: 0.3, frequencia: 'monthly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
