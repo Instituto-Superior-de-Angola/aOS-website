@@ -134,6 +134,47 @@ de publicação falham — o repositório fica utilizável desde o primeiro dia.
 
 ---
 
+## 🔎 Indexação e visibilidade
+
+O sítio publica `sitemap.xml`, `robots.txt`, `feed.xml` (RSS do registo de alterações),
+`llms.txt` (para agentes de modelos de linguagem) e dados estruturados schema.org
+(`SoftwareApplication`, `CollegeOrUniversity`, `WebSite`).
+
+### IndexNow — automatizado
+
+```bash
+npm run submeter:indexnow
+```
+
+Notifica **Bing, Yandex, Seznam e Naver** das páginas do sitemap. A chave de verificação
+está em `public/<chave>.txt` e é lida de `lib/marca.ts`. Correr após publicar alterações
+de conteúdo relevantes.
+
+### Google Search Console — requer conta
+
+O Google **não participa no IndexNow** e descontinuou o *ping* de sitemaps em 2023. A
+submissão exige autenticação e tem de ser feita por um titular da conta:
+
+1. Em [search.google.com/search-console](https://search.google.com/search-console), adicionar
+   a propriedade `angolanos.isa.ao`.
+2. Verificar a propriedade. Se optar pela etiqueta HTML, definir a variável de ambiente
+   `NEXT_PUBLIC_GOOGLE_VERIFICATION` no projecto Vercel com o código fornecido — o código
+   já está preparado para a emitir, sem necessidade de alteração. Em alternativa, verificar
+   por registo DNS.
+3. Em **Sitemaps**, submeter `sitemap.xml`.
+
+Recomenda-se ainda submeter o mesmo sitemap no [Bing Webmaster Tools](https://www.bing.com/webmasters).
+
+## 🔐 Privacidade e medição
+
+A medição de audiência usa o Google Consent Mode com estado por omissão **negado**,
+declarado no `<head>` antes do carregamento do `gtag.js`. Nenhum cookie de medição é
+instalado antes de decisão explícita do visitante, e o endereço IP é anonimizado.
+
+Se alterar a ordem destes scripts, verifique que nenhum cookie `_ga` é instalado antes do
+consentimento — é isso que sustenta o fundamento de licitude declarado na
+[Política de Privacidade](https://angolanos.isa.ao/privacidade).
+
 ## 🤝 Contribuir
 
 Aplicam-se as regras do projecto principal, incluindo o padrão de
