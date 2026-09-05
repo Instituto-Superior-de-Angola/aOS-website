@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: 'Contribuir',
   description:
     'Como contribuir para o angolanOS: perfis procurados, padrão de commits, fluxo de submissão, tradução para as línguas nacionais e divulgação responsável de vulnerabilidades.',
+  alternates: { canonical: '/contribuir' },
+  openGraph: {
+    title: 'Contribuir — angolanOS',
+    description: 'Como contribuir para o angolanOS: perfis procurados, padrão de commits, fluxo de submissão e tradução para as línguas nacionais.',
+    url: '/contribuir',
+  },
 };
 
 const PERFIS = [
@@ -21,7 +27,7 @@ const PERFIS = [
   {
     icone: Languages,
     titulo: 'Linguística e tradução',
-    texto: 'Especialistas em línguas bantu para o esforço de localização profunda, em articulação com o ILN.',
+    texto: 'Especialistas em línguas bantu para o esforço de localização profunda do sistema.',
   },
   {
     icone: GraduationCap,
@@ -188,9 +194,9 @@ debuild -us -uc`}</Codigo>
           </ul>
 
           <p className="mt-7 text-sm leading-7 text-tinta-suave">
-            Nova terminologia nuclear é auditada pelo grupo de validação linguística, coordenado com o{' '}
-            <strong>Instituto de Línguas Nacionais (ILN)</strong>. As traduções da Administração Pública são revistas
-            semestralmente.
+            Nova terminologia técnica é submetida a validação por falantes nativos antes de entrar no
+            catálogo. A correcção morfossintáctica de uma tradução não é aferível por quem não fala a
+            língua, pelo que este passo não é dispensável.
           </p>
         </section>
 

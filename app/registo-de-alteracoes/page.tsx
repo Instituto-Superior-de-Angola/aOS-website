@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: 'Registo de Alterações',
   description:
     'Histórico de versões do angolanOS, do estado actual de desenvolvimento aos marcos planeados até ao aOS 3.0 LTS.',
+  alternates: { canonical: '/registo-de-alteracoes' },
+  openGraph: {
+    title: 'Registo de Alterações — angolanOS',
+    description: 'Histórico de versões do angolanOS, do estado actual de desenvolvimento aos marcos planeados.',
+    url: '/registo-de-alteracoes',
+  },
 };
 
 export default function PaginaRegistoAlteracoes() {

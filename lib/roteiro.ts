@@ -35,7 +35,7 @@ export const FASES: Fase[] = [
     periodo: 'Nov 2027 — Out 2028',
     estado: 'futura',
     objectivo: 'Estabilizar o sistema e lançar a primeira versão apta a produção.',
-    marcos: ['Secure Boot com HSM nacional', 'Traduções nucleares validadas pelo ILN', 'Lançamento do aOS 1.0'],
+    marcos: ['Secure Boot com HSM nacional', 'Traduções nucleares validadas por falantes nativos', 'Lançamento do aOS 1.0'],
   },
   {
     id: 'fase-3',

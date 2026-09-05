@@ -70,7 +70,7 @@ export const LANCAMENTOS: Lancamento[] = [
     alteracoes: [
       { tipo: 'feat', escopo: 'iso', descricao: 'Edições Desktop Pública, Servidor Estatal e Educação em versão estável.' },
       { tipo: 'sec', escopo: 'kernel', descricao: 'UEFI Secure Boot com a Chave Mestra Nacional selada em HSM.' },
-      { tipo: 'feat', escopo: 'locale', descricao: 'Traduções nucleares da Administração Pública validadas com o ILN.' },
+      { tipo: 'feat', escopo: 'locale', descricao: 'Traduções nucleares da Administração Pública validadas por falantes nativos.' },
       { tipo: 'perf', escopo: 'build', descricao: 'Builds reproduzíveis bit a bit verificáveis por terceiros.' },
     ],
   },
@@ -98,7 +98,7 @@ export const LANCAMENTOS: Lancamento[] = [
       'Versão de suporte alargado que sustenta a meta nacional de mais de 100.000 postos de trabalho migrados.',
     alteracoes: [
       { tipo: 'feat', escopo: 'iso', descricao: 'Ciclo de suporte alargado (LTS) para todas as seis edições.' },
-      { tipo: 'feat', escopo: 'build', descricao: 'Plano de continuidade soberana de três níveis operacional (Verde, Amarelo, Vermelho).' },
+      { tipo: 'feat', escopo: 'build', descricao: 'Plano de continuidade operacional de três níveis (Verde, Amarelo, Vermelho).' },
       { tipo: 'docs', escopo: 'build', descricao: 'Programa nacional de formação e certificação de administradores aOS.' },
     ],
   },

@@ -13,7 +13,7 @@ const PILARES = [
     icone: Landmark,
     titulo: 'Independência tecnológica',
     texto:
-      'Nenhum Estado moderno é plenamente soberano sem o controlo do código que processa a sua informação. O aOS elimina a dependência de licenças proprietárias estrangeiras.',
+      'Um Estado só controla a informação que processa se puder inspeccionar e reconstruir o código que a processa. O aOS reduz a dependência de licenças proprietárias estrangeiras.',
   },
   {
     icone: ShieldCheck,
@@ -39,7 +39,7 @@ const CAMADAS = [
   {
     icone: Package,
     titulo: 'Base Debian Estável',
-    texto: 'O aOS não reescreve a roda. Assenta em Debian Estável e concentra o esforço nacional nas camadas que exigem soberania.',
+    texto: 'O aOS não reescreve a roda. Assenta em Debian Estável e concentra o esforço nacional nas camadas que exigem controlo próprio.',
   },
   {
     icone: Server,
@@ -94,14 +94,14 @@ export default function PaginaInicial() {
 
             <h1 className="mt-7 text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl">
               O sistema operativo{' '}
-              <span className="texto-gradiente">soberano</span>{' '}
-              da República de Angola.
+              <span className="texto-gradiente">angolano</span>{' '}
+              para a Administração Pública.
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-7 text-white/65">
-              O <strong className="font-semibold text-white">angolanOS</strong> é uma distribuição GNU/Linux estatal,
-              segura, auditável e falada nas línguas de Angola. Construída sobre Debian Estável para a Administração
-              Pública, a Educação e os sectores de Defesa e Segurança.
+              O <strong className="font-semibold text-white">angolanOS</strong> é uma distribuição GNU/Linux
+              auditável e falada nas línguas de Angola, construída sobre Debian Estável. Destina-se à Administração
+              Pública, à Educação e aos sectores de Defesa e Segurança.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -232,7 +232,7 @@ export default function PaginaInicial() {
         <p className="kicker">Arquitectura</p>
         <h2 className="mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">Pragmatismo estratégico, não vaidade técnica</h2>
         <p className="prosa mt-4">
-          A soberania não está em reescrever o kernel. Está em controlar a distribuição, as chaves e o repositório —
+          O controlo não está em reescrever o kernel. Está em deter a distribuição, as chaves e o repositório —
           e em poder provar, a qualquer momento, o que corre nas máquinas do Estado.
         </p>
 
@@ -267,7 +267,7 @@ export default function PaginaInicial() {
             </p>
             <p className="mt-4 text-sm leading-6 text-white/45">
               As traduções nucleares da Administração Pública são revistas semestralmente em articulação com o
-              Instituto de Línguas Nacionais (ILN).
+              linguistas das próprias comunidades falantes.
             </p>
             <Link
               href="/contribuir#linguas"
@@ -334,7 +334,7 @@ export default function PaginaInicial() {
       <section className="contentor">
         <div className="overflow-hidden rounded-2xl bg-gradiente-aos px-8 py-14 text-center text-white sm:px-14">
           <h2 className="mx-auto max-w-2xl text-3xl font-bold text-white sm:text-4xl">
-            A soberania digital constrói-se com pessoas.
+            Um sistema operativo nacional constrói-se com pessoas.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-white/85">
             Engenheiros, linguistas, professores e peritos de segurança. Se sabe empacotar Debian, falar Umbundu ou

@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   title: 'Descarregar',
   description:
     'Estado das imagens do angolanOS, instruções de verificação criptográfica e como compilar a sua própria ISO a partir do código-fonte.',
+  alternates: { canonical: '/descarregar' },
+  openGraph: {
+    title: 'Descarregar — angolanOS',
+    description: 'Estado das imagens do angolanOS, verificação criptográfica e como compilar a sua própria imagem a partir do código-fonte.',
+    url: '/descarregar',
+  },
 };
 
 export default function PaginaDescarregar() {

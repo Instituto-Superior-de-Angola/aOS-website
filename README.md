@@ -4,8 +4,8 @@
   <img src="public/logo-aos.png" alt="Logotipo do angolanOS" width="180"/>
 </p>
 
-Website oficial do **angolanOS (aOS)** — a Distribuição GNU/Linux Soberana da República de Angola,
-um programa do **Instituto Superior de Angola (ISA)**.
+Website oficial do **angolanOS (aOS)** — distribuição GNU/Linux angolana para a Administração
+Pública, projecto de investigação aplicada do **Instituto Superior de Angola (ISA)**.
 
 O código do sistema operativo vive no repositório
 [`projecto_angolanOS`](https://github.com/Instituto-Superior-de-Angola/projecto_angolanOS).
@@ -117,7 +117,7 @@ arranca depois da Verificação Contínua passar, nada chega a produção sem pa
    gh secret set VERCEL_PROJECT_ID --repo Instituto-Superior-de-Angola/aOS-website
    ```
 
-5. Aponte o domínio `aos.gov.ao` ao projecto em **Vercel → Settings → Domains**.
+5. Aponte o domínio `angolanos.isa.ao` ao projecto em **Vercel → Settings → Domains**.
 
 A pasta `.vercel/` está no `.gitignore` e nunca deve ser commitada.
 
@@ -156,4 +156,4 @@ seu uso fora do projecto carece de autorização.
 ---
 
 **Instituto Superior de Angola (ISA)**
-*Ciência, Inovação e Soberania Digital.*
+*Por um futuro Superior.*

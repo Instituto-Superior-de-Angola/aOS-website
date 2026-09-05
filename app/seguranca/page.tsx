@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: 'Segurança',
   description:
     'Política de segurança do angolanOS: divulgação responsável de vulnerabilidades, cadeia de confiança criptográfica e regras de endurecimento.',
+  alternates: { canonical: '/seguranca' },
+  openGraph: {
+    title: 'Segurança — angolanOS',
+    description: 'Política de segurança do angolanOS: divulgação responsável de vulnerabilidades, cadeia de confiança e regras de endurecimento.',
+    url: '/seguranca',
+  },
 };
 
 const PRINCIPIOS = [
@@ -95,8 +101,8 @@ export default function PaginaSeguranca() {
             </li>
             <li className="border-l-2 border-aos-laranja pl-5">
               <strong className="font-semibold text-tinta">Builds reproduzíveis.</strong> Uma imagem que não pode ser
-              reconstruída de forma idêntica por um terceiro não pode ser auditada — e o que não é auditável não é
-              soberano.
+              reconstruída de forma idêntica por um terceiro não pode ser auditada — e o que não é auditável não
+              pode ser confiado a infraestrutura crítica.
             </li>
           </ul>
 

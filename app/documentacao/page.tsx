@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: 'Documentação',
   description:
     'Documentação técnica do angolanOS: arquitectura da distribuição, infraestrutura de chaves, builds reproduzíveis, ontologia e modelo de governança.',
+  alternates: { canonical: '/documentacao' },
+  openGraph: {
+    title: 'Documentação — angolanOS',
+    description: 'Documentação técnica do angolanOS: arquitectura, infraestrutura de chaves, builds reproduzíveis e governação.',
+    url: '/documentacao',
+  },
 };
 
 type Documento = { titulo: string; descricao: string; caminho: string };
@@ -17,7 +23,7 @@ const SECCOES: { id: string; titulo: string; introducao: string; documentos: Doc
     id: 'arquitectura',
     titulo: 'Arquitectura',
     introducao:
-      'Como o sistema está construído: a base Debian, as camadas soberanas acrescentadas e as decisões que as justificam.',
+      'Como o sistema está construído: a base Debian, as camadas nacionais acrescentadas e as decisões que as justificam.',
     documentos: [
       {
         titulo: 'Arquitectura da distribuição',

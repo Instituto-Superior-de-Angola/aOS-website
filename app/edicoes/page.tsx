@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: 'Edições',
   description:
     'As seis edições do angolanOS — Desktop Pública, Servidor Estatal, Defesa, Educação, Live Forense e Embarcado — partilham um único núcleo Debian endurecido.',
+  alternates: { canonical: '/edicoes' },
+  openGraph: {
+    title: 'Edições — angolanOS',
+    description: 'As seis edições do angolanOS — Desktop, Servidor, Defesa, Educação, Forense e Embarcado — partilham um núcleo Debian comum.',
+    url: '/edicoes',
+  },
 };
 
 export default function PaginaEdicoes() {

@@ -20,11 +20,14 @@ const csp = [
   "form-action 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
-  "script-src 'self' 'unsafe-inline'",
+  // O Google Analytics é servido pelo googletagmanager; sem esta origem o
+  // script é bloqueado pela política sem qualquer erro visível.
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
-  "img-src 'self' data: blob:",
-  "connect-src 'self'",
+  // O Analytics envia eventos por fetch e, em alguns casos, por pixel.
+  "img-src 'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com",
+  "connect-src 'self' https://www.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
   "manifest-src 'self'",
   'upgrade-insecure-requests',
 ].join('; ');

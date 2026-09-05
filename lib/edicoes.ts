@@ -39,8 +39,8 @@ export const EDICOES: Edicao[] = [
     nome: 'Servidor Estatal',
     resumo: 'A base das nuvens governamentais.',
     descricao:
-      'Perfil mínimo, sem ambiente gráfico, destinado a centros de dados do Estado e à nuvem soberana. Endurecimento por omissão, auditoria integral e gestão remota através de infraestrutura declarativa.',
-    publico: 'INFOSI, centros de dados e nuvem soberana',
+      'Perfil mínimo, sem ambiente gráfico, destinado a centros de dados do Estado e à nuvem governamental. Endurecimento por omissão, auditoria integral e gestão remota através de infraestrutura declarativa.',
+    publico: 'Centros de dados e infraestrutura de nuvem do Estado',
     ambiente: 'Sem interface gráfica, administração remota',
     destaques: [
       'Perfil de kernel endurecido para carga de servidor',
@@ -57,7 +57,7 @@ export const EDICOES: Edicao[] = [
     resumo: 'Edição isolada para informação classificada.',
     descricao:
       'Sistema em regime air-gapped, sem qualquer dependência de rede externa, destinado ao tratamento de informação classificada até ao grau «Reservado». Cadeia de arranque selada em HSM nacional e partições verificadas com dm-verity.',
-    publico: 'Forças Armadas, Casa de Segurança e órgãos de defesa',
+    publico: 'Órgãos de defesa e segurança',
     ambiente: 'Air-gapped, certificação em curso',
     destaques: [
       'Sem dependências de rede externa em todo o ciclo de vida',
@@ -90,8 +90,8 @@ export const EDICOES: Edicao[] = [
     nome: 'Live Forense',
     resumo: 'Perícia digital sem tocar no disco.',
     descricao:
-      'Imagem executada inteiramente em memória, com montagem de dispositivos apenas em modo de leitura, para recolha e análise de prova digital pela Polícia Nacional e pelo INFOSI.',
-    publico: 'Polícia Nacional, INFOSI e peritos forenses',
+      'Imagem executada inteiramente em memória, com montagem de dispositivos apenas em modo de leitura, para recolha e análise de prova digital por peritos de investigação criminal.',
+    publico: 'Peritos de investigação criminal',
     ambiente: 'Live em memória, sem escrita em disco',
     destaques: [
       'Montagem forçada em modo de leitura de todos os dispositivos',

@@ -1,23 +1,23 @@
 import type { MetadataRoute } from 'next';
 import { MARCA } from '@/lib/marca';
 
-const CAMINHOS = [
-  '',
-  '/edicoes',
-  '/descarregar',
-  '/registo-de-alteracoes',
-  '/contribuir',
-  '/documentacao',
-  '/comunidade',
-  '/seguranca',
+const PAGINAS: { caminho: string; prioridade: number; frequencia: 'weekly' | 'monthly' }[] = [
+  { caminho: '', prioridade: 1.0, frequencia: 'weekly' },
+  { caminho: '/edicoes', prioridade: 0.9, frequencia: 'monthly' },
+  { caminho: '/descarregar', prioridade: 0.9, frequencia: 'weekly' },
+  { caminho: '/registo-de-alteracoes', prioridade: 0.8, frequencia: 'weekly' },
+  { caminho: '/contribuir', prioridade: 0.8, frequencia: 'monthly' },
+  { caminho: '/documentacao', prioridade: 0.7, frequencia: 'monthly' },
+  { caminho: '/comunidade', prioridade: 0.7, frequencia: 'monthly' },
+  { caminho: '/seguranca', prioridade: 0.6, frequencia: 'monthly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const agora = new Date();
-  return CAMINHOS.map((caminho) => ({
-    url: `https://${MARCA.dominio}${caminho}`,
+  return PAGINAS.map(({ caminho, prioridade, frequencia }) => ({
+    url: `${MARCA.url}${caminho}`,
     lastModified: agora,
-    changeFrequency: caminho === '' ? 'weekly' : 'monthly',
-    priority: caminho === '' ? 1 : 0.7,
+    changeFrequency: frequencia,
+    priority: prioridade,
   }));
 }

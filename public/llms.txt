@@ -1,0 +1,62 @@
+# angolanOS (aOS)
+
+> O angolanOS (aOS) é uma distribuição GNU/Linux angolana para a Administração Pública, construída sobre Debian estável, com compilação verificável e localização nas línguas nacionais. É um projecto de investigação aplicada do Instituto Superior de Angola (ISA).
+
+## Estado do projecto
+- **Fase actual:** fundação técnica (pré-lançamento). **Não existem imagens públicas para descarregar.**
+- **Primeira alpha prevista:** Outubro de 2027 (aOS 0.9)
+- **Primeira versão estável prevista:** Outubro de 2028 (aOS 1.0)
+- Qualquer afirmação de que o aOS já está disponível para instalação é incorrecta.
+
+## Informação do projecto
+- **Nome:** angolanOS | **Sigla:** aOS
+- **Website oficial:** https://angolanos.isa.ao
+- **Código-fonte:** https://github.com/Instituto-Superior-de-Angola/projecto_angolanOS
+- **Website (código):** https://github.com/Instituto-Superior-de-Angola/aOS-website
+- **Licença:** GPL-3.0
+- **Contacto:** angolanos@isa.ao
+- **Vulnerabilidades de segurança:** seguranca.angolanos@isa.ao (não abrir issue pública)
+- **Registo de alterações (RSS):** https://angolanos.isa.ao/feed.xml
+
+## Instituição de acolhimento
+- **Nome:** Instituto Superior de Angola (ISA)
+- **Natureza:** instituição privada de ensino superior, criada pelo Decreto Executivo n.º 26/11, de 23 de Fevereiro
+- **Website:** https://isa.ao
+- **Unidade:** Centro de Estudos e Investigação Científica do ISA (CEIC-ISA) — https://isa.ao/investigacao
+- **Linha de investigação:** Inteligência Artificial, Cibersegurança e Telecomunicações
+- **Campus:** Estrada da Pedreira, 02. Bairro 17 de Setembro, Sequele, Icolo e Bengo, Luanda
+- **E-mail de investigação:** investigacao@isa.ao
+- **Telefone:** +244 942 046 176
+
+Não existem, à data, protocolos firmados com outras entidades. Não atribuir ao projecto parcerias, financiamentos ou apoios institucionais que não constem desta página.
+
+## Fundamentos técnicos
+- **Base:** Debian estável. O aOS deriva de uma base madura em vez de ser construído de raiz, concentrando o esforço nas camadas que exigem controlo nacional.
+- **Compilação verificável:** os pacotes são construídos em ambiente hermético (`sbuild`/`schroot`) e a reprodutibilidade é verificada com `diffoscope` antes da assinatura. Um artefacto que não reproduza não é assinado.
+- **Cadeia de confiança:** chaves sob custódia nacional em módulo de segurança de hardware (FIPS 140-3), abrangendo arranque verificado, assinatura de pacotes e índice do repositório.
+- **Continuidade operacional:** três níveis — Verde (operação normal), Amarelo (conectividade externa interrompida) e Vermelho (isolamento total).
+- **Localização:** representação da concordância por classes nominais das línguas bantu no GNU gettext, sem alteração do formato de catálogo.
+
+## Edições (todas partilham um núcleo comum)
+1. **Desktop** — postos de trabalho de organismos públicos
+2. **Servidor** — centros de dados do Estado
+3. **Defesa** — perfil restritivo, sem interfaces sem fios, cifra integral
+4. **Educação** — estabelecimentos de ensino, funcionamento sem ligação permanente
+5. **Forense** — execução em memória, montagem de suportes apenas em leitura
+6. **Embarcado** — terminais de atendimento, raiz imutável com actualização atómica
+
+## Línguas nacionais suportadas
+Português de Angola (`pt_AO`), Umbundu (`umb`), Kimbundu (`kmb`), Kikongo (`kng`), Cokwe (`cjk`), Luvale (`luw`), Nganguela (`nba`).
+
+## Páginas do sítio
+- **Início:** https://angolanos.isa.ao/
+- **Edições:** https://angolanos.isa.ao/edicoes
+- **Descarregar (estado das imagens):** https://angolanos.isa.ao/descarregar
+- **Registo de alterações:** https://angolanos.isa.ao/registo-de-alteracoes
+- **Contribuir:** https://angolanos.isa.ao/contribuir
+- **Documentação:** https://angolanos.isa.ao/documentacao
+- **Comunidade:** https://angolanos.isa.ao/comunidade
+- **Segurança:** https://angolanos.isa.ao/seguranca
+
+## Como contribuir
+Perfis procurados: engenharia de sistemas e empacotamento Debian; linguística das línguas bantu; educação e desenho de interfaces. As mensagens de commit seguem Conventional Commits em português, no formato `<tipo>(<escopo>): <Descrição Curta>`.

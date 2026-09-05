@@ -33,8 +33,13 @@ export function Logotipo({ tamanho = 36, apenasSimbolo = false, invertido = fals
           <span className={cn('font-display text-[1.05rem] font-bold tracking-tight', invertido ? 'text-white' : 'text-tinta')}>
             angolan<span className="text-aos-laranja">OS</span>
           </span>
-          <span className={cn('mt-1 text-2xs uppercase tracking-kicker', invertido ? 'text-white/55' : 'text-tinta-tenue')}>
-            República de Angola
+          <span
+            className={cn(
+              'mt-1 whitespace-nowrap text-2xs uppercase tracking-kicker',
+              invertido ? 'text-white/55' : 'text-tinta-tenue',
+            )}
+          >
+            Instituto Superior de Angola
           </span>
         </span>
       )}
